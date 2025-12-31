@@ -12,7 +12,7 @@ type DataTableProps<T> = {
 };
 
 export default function DataTable<T extends { id: number | string }>({
-  data,
+  data, 
   columns,
 }: DataTableProps<T>) {
   return (
