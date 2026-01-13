@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 type Column<T> = {
   key: keyof T;
   header: string;
+  width: number;
+  format?: string;
   render?: (value: T[keyof T]) => ReactNode;
 };
 
@@ -12,12 +14,12 @@ type DataTableProps<T> = {
 };
 
 export default function DataTable<T extends { id: number | string }>({
-  data, 
+  data,
   columns,
 }: DataTableProps<T>) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full border-collapse border border-gray-200">
+      <table className="min-w-full  bg-white text-black">
         <TableHeader columns={columns} />
         <tbody>
           {data.map((row) => (
@@ -38,7 +40,9 @@ function TableHeader<T>({ columns }: TableHeaderProps<T>) {
     <thead>
       <tr>
         {columns.map((column) => (
-          <th key={String(column.key)} className="border p-2">
+          <th key={String(column.key)} 
+          className="border p-2 bg-[#fbefd2] border-[#ffb400]" 
+          style={{ width: `${column.width * 100}px` }}>
             {column.header}
           </th>
         ))}
@@ -63,6 +67,7 @@ function TableRow<T extends { id: number | string }>({
           key={String(column.key)}
           value={row[column.key]}
           render={column.render}
+          format={column.format}
         />
       ))}
     </tr>
@@ -71,11 +76,12 @@ function TableRow<T extends { id: number | string }>({
 
 type TableCellProps<T> = {
   value: T;
+  format?: string;
   render?: (value: T) => ReactNode;
 };
 
-function TableCell<T>({ value, render }: TableCellProps<T>) {
+function TableCell<T>({ value, format, render }: TableCellProps<T>) {
   return (
-    <td className="border p-2">{render ? render(value) : String(value)}</td>
+    <td className="border p-2" style={{textAlign: format === "center" ? "center" : "left"}} >{render ? render(value) : String(value)}</td>
   );
 }

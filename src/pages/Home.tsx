@@ -1,4 +1,5 @@
 import DataTable from "../components/DataTable";
+import Header from "../components/Header";
 
 type Entry = {
   id: number;
@@ -14,7 +15,7 @@ type Entry = {
 const testData = [
   {
     id: 1,
-    dates: "June 10-12, 2024",
+    dates: "6/10 - 6/12",
     tournament: "Summer Open",
     city: "Los Angeles",
     timezone: "PDT",
@@ -24,7 +25,7 @@ const testData = [
   },
   {
     id: 2,
-    dates: "July 5-7, 2024",
+    dates: "7/5 - 7/7",
     tournament: "Midyear Championship",
     city: "New York",
     timezone: "EDT",
@@ -37,22 +38,25 @@ const testData = [
 const columns: Array<{
   key: keyof Entry;
   header: string;
+  width: number;
+  format?: string;
   render?: (value: Entry[keyof Entry]) => React.ReactNode;
 }> = [
-  { key: 'dates', header: 'Dates' },
-  { key: 'tournament', header: 'Tournament' },
-  { key: 'city', header: 'City' },  
-  { key: 'timezone', header: 'LO/TZ' },
-  { key: 'mode', header: 'Mode' },
-  { key: 'registration', header: 'Registration' },
-  { key: 'judge', header: 'Judge' },
+  { key: 'dates', header: 'Dates', width: .5 , format: "center"},
+  { key: 'tournament', header: 'Tournament', width: 3 },
+  { key: 'city', header: 'City', width: 1 },  
+  { key: 'timezone', header: 'LO/TZ', width: .5 },
+  { key: 'mode', header: 'Mode', width: 1 },
+  { key: 'registration', header: 'Registration', width: 1, format: "center" },
+  { key: 'judge', header: 'Judge', width: 1 },
 ]
 
 export default function Home() {
   return (
     <div className="flex flex-col gap-4 mt-4">
-      <h1>UPCOMING TOURNAMENTS</h1>
-      <div className="m-4">
+      <Header /> 
+      <h1 className="ml-5">UPCOMING TOURNAMENTS</h1>
+      <div className="m-4 bg-white">
         <DataTable<Entry> data={testData} columns={columns} />
       </div>
     </div>
