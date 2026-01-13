@@ -19,7 +19,7 @@ export default function DataTable<T extends { id: number | string }>({
 }: DataTableProps<T>) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full  bg-white text-black">
+      <table className="min-w-full bg-white text-black">
         <TableHeader columns={columns} />
         <tbody>
           {data.map((row) => (
@@ -41,7 +41,7 @@ function TableHeader<T>({ columns }: TableHeaderProps<T>) {
       <tr>
         {columns.map((column) => (
           <th key={String(column.key)} 
-          className="border p-2 bg-[#fbefd2] border-[#ffb400]" 
+          className="p-2 bg-[#fbefd2] hover:bg-[#ffb400]" 
           style={{ width: `${column.width * 100}px` }}>
             {column.header}
           </th>
@@ -61,7 +61,7 @@ function TableRow<T extends { id: number | string }>({
   columns,
 }: TableRowProps<T>) {
   return (
-    <tr key={row.id}>
+    <tr key={row.id} className="odd:bg-white even:bg-[#eaeaea] hover:bg-[#f7efe3]">
       {columns.map((column) => (
         <TableCell
           key={String(column.key)}
@@ -82,6 +82,8 @@ type TableCellProps<T> = {
 
 function TableCell<T>({ value, format, render }: TableCellProps<T>) {
   return (
-    <td className="border p-2" style={{textAlign: format === "center" ? "center" : "left"}} >{render ? render(value) : String(value)}</td>
+    <td className="p-2" style={{textAlign: format === "center" ? "center" : "left"}} >
+      {render ? render(value) : String(value)}
+    </td>
   );
 }
