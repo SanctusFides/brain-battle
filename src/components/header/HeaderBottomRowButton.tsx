@@ -8,13 +8,13 @@ const HeaderTopRowButton = (props: HeaderButtonProps)=> {
     const [isHovered, setIsHovered] = useState(false);
 
     const defaultStyle: React.CSSProperties = {
-        padding: "3px 8px 4px 8px",
+        background: isHovered ? "#008dbf" : "#005573",
+        padding: "6px 8px 6px 8px",
         cursor: "pointer",
     };
 
     const hoverStyle: React.CSSProperties = {
-        background: "#ffdb84",
-        color: "#00394d",
+
     };
 
     const currentStyle = { ...defaultStyle, ...(isHovered && hoverStyle) };

@@ -53,7 +53,7 @@ const columns: Array<{
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-4 mt-4">
+    <div className="flex flex-col gap-2">
       <Header /> 
       <div className="m-4 bg-white  max-h-full">
         <div className="p-4">
