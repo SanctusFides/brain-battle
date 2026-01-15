@@ -16,7 +16,7 @@ type DataTableProps<T> = {
 export default function DataTable<T extends { id: number | string }>({
   data,
   columns,
-}: DataTableProps<T>) {
+}: Readonly<DataTableProps<T>>) {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white text-black">
@@ -35,7 +35,7 @@ type TableHeaderProps<T> = {
   columns: Column<T>[];
 };
 
-function TableHeader<T>({ columns }: TableHeaderProps<T>) {
+function TableHeader<T>({ columns }: Readonly<TableHeaderProps<T>>) {
   return (
     <thead>
       <tr>
@@ -59,7 +59,7 @@ type TableRowProps<T> = {
 function TableRow<T extends { id: number | string }>({
   row,
   columns,
-}: TableRowProps<T>) {
+}: Readonly<TableRowProps<T>>) {
   return (
     <tr key={row.id} className="odd:bg-white even:bg-[#eaeaea] hover:bg-[#f7efe3]">
       {columns.map((column) => (
@@ -80,7 +80,7 @@ type TableCellProps<T> = {
   render?: (value: T) => ReactNode;
 };
 
-function TableCell<T>({ value, format, render }: TableCellProps<T>) {
+function TableCell<T>({ value, format, render }: Readonly<TableCellProps<T>>) {
   return (
     <td className="p-2" style={{textAlign: format === "center" ? "center" : "left"}} >
       {render ? render(value) : String(value)}

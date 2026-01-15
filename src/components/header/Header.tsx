@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
 
-import Signup from "../SignupForm.tsx";
 import HeaderTopRowButton from "./HeaderTopRowButton.tsx";
 import HeaderBottomRowButton from "./HeaderBottomRowButton.tsx";
 
@@ -19,10 +18,8 @@ export default function Header() {
           <h4 className={"mt-0.5"}>|</h4>
 
           <Link to={"/signup"} >
-
-          <HeaderTopRowButton content={"Sign Up"} className="font-semibold" aria-label={"sign up button"}>
-          </HeaderTopRowButton>
-
+            <HeaderTopRowButton content={"Sign Up"} className="font-semibold" aria-label={"sign up button"}>
+            </HeaderTopRowButton>
           </Link>
 
 

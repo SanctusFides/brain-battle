@@ -20,9 +20,9 @@ import SignupForm from "../../components/SignupForm";
 
 export default function Signup() {
     return (
-        <div className={"flex flex-col gap-8"}>
+        <div className={"flex flex-col gap-8 max-h-full max-w-full"}>
             <Header />
-            <div className={"bg-white w-1/2 max-h-full mx-auto"}>
+            <div className={"bg-white lg:w-1/2 mx-auto rounded"}>
                 <SignupForm />
             </div>
         </div>
