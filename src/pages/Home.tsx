@@ -1,5 +1,5 @@
 import DataTable from "../components/DataTable";
-import Header from "../components/Header";
+import Header from "../components/header/Header.tsx";
 
 type Entry = {
   id: number;
