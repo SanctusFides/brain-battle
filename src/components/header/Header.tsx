@@ -1,3 +1,6 @@
+import {Link} from "react-router-dom";
+
+import Signup from "../SignupForm.tsx";
 import HeaderTopRowButton from "./HeaderTopRowButton.tsx";
 import HeaderBottomRowButton from "./HeaderBottomRowButton.tsx";
 
@@ -5,7 +8,9 @@ export default function Header() {
   return (
   <header className="mt-5 ml-5 mr-5">
     <div className="flex justify-between">
-      <h1 className="">Brain Battles</h1>
+      <Link to={"/"}>
+        <h1 className="">Brain Battles</h1>
+      </Link>
       <div className="flex flex-col justify-center">
         <div className="flex gap-2">
           <h4 className={"mt-0.5"}>|</h4>
@@ -13,7 +18,13 @@ export default function Header() {
           <HeaderTopRowButton content={"Login"} className="font-semibold" aria-label={"login button"} />
           <h4 className={"mt-0.5"}>|</h4>
 
-          <HeaderTopRowButton content={"Sign Up"} className="font-semibold" aria-label={"sign up button"}/>
+          <Link to={"/signup"} >
+
+          <HeaderTopRowButton content={"Sign Up"} className="font-semibold" aria-label={"sign up button"}>
+          </HeaderTopRowButton>
+
+          </Link>
+
 
           <input placeholder="SEARCH TOURNAMENTS" className="bg-[#005573] p-1 w-72"></input>
         </div>
